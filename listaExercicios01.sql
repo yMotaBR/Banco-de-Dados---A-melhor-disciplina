@@ -83,3 +83,5 @@ INSERT INTO vendas (produto, receita) VALUES
 ('Produto D', 5000.00);
 
 select titulo from livros;
+select NOME from autores
+WHERE nascimento < '1900-01-01';
