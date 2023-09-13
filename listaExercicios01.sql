@@ -100,3 +100,8 @@ where matriculas.curso = 'Engenharia de Software';
 SELECT produto, SUM(receita) as  receita_total
 FROM vendas
 GROUP BY produto;
+
+select autores.nome, count(livros.id) as numero_de_livros
+from autores
+left join livros on autores.id = livros.autor_id
+group by autores.id;
