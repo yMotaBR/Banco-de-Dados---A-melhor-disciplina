@@ -96,3 +96,7 @@ select alunos.nome
 from alunos 
 join matriculas on alunos.id = matriculas.aluno_id
 where matriculas.curso = 'Engenharia de Software';
+
+SELECT produto, SUM(receita) as  receita_total
+FROM vendas
+GROUP BY produto;
