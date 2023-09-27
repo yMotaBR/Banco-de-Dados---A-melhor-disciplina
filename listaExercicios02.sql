@@ -24,3 +24,8 @@ BEGIN
         SET possuiLivros = FALSE;
     END IF;
 END;
+
+CREATE PROCEDURE sp_LivrosAteAno(IN ano INT)
+BEGIN
+    SELECT * FROM livros WHERE ano <= ano;
+END;
