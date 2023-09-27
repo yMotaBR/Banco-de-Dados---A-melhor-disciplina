@@ -29,3 +29,23 @@ CREATE PROCEDURE sp_LivrosAteAno(IN ano INT)
 BEGIN
     SELECT * FROM livros WHERE ano <= ano;
 END;
+
+CREATE PROCEDURE sp_TitulosPorCategoria(IN categoria VARCHAR(50))
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE titulo VARCHAR(255);
+    DECLARE cur CURSOR FOR SELECT titulo FROM Livro WHERE categoria = categoria;
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+
+    read_loop: LOOP
+        FETCH cur INTO titulo;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+    END LOOP;
+
+    CLOSE cur;
+END;
