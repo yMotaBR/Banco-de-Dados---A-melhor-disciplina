@@ -87,3 +87,10 @@ BEGIN
     END IF;
     
 END;
+
+CREATE PROCEDURE sp_LivrosESeusAutores()
+BEGIN
+    SELECT Livro.titulo, Autor.nome, Autor.sobrenome
+    FROM Livro
+    INNER JOIN Autor ON Livro.id_autor = Autor.id;
+END;
