@@ -12,3 +12,15 @@ CREATE PROCEDURE sp_ContarLivrosPorCategoria(IN categoria VARCHAR(255), OUT tota
 BEGIN
     SELECT COUNT(*) INTO total FROM livros WHERE categoria = categoria;
 END;
+
+CREATE PROCEDURE sp_VerificarLivrosCategoria(IN categoria VARCHAR(255), OUT possuiLivros BOOLEAN)
+BEGIN
+    DECLARE count INT;
+    SELECT COUNT(*) INTO count FROM livros WHERE categoria = categoria;
+    
+    IF count > 0 THEN
+        SET possuiLivros = TRUE;
+    ELSE
+        SET possuiLivros = FALSE;
+    END IF;
+END;
