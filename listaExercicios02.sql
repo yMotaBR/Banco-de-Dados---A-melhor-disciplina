@@ -54,8 +54,12 @@ CREATE PROCEDURE sp_AdicionarLivro(IN titulo VARCHAR(255), IN autor VARCHAR(255)
 BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
-        -- Faça algo com o erro, como registrar em um log ou retornar uma mensagem de erro
     END;
 
     INSERT INTO Livro (titulo, autor, categoria) VALUES (titulo, autor, categoria);
+END;
+
+CREATE PROCEDURE sp_AutorMaisAntigo(OUT nomeAutor VARCHAR(255))
+BEGIN
+    SELECT nome INTO nomeAutor FROM Autor ORDER BY data_nascimento LIMIT 1;
 END;
